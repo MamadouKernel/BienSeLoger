@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Détail de nos Proprietes | BienseLoger</title>
+    <meta name="description" content="BienseLoger est un site pour faciliter la population avoir des logements">
+    <meta name="author" content="Kernel_MK">
+    <meta name="keyword" content="html5, css, bootstrap, property,twig, real-estate theme , bootstrap template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="public/assets/css/normalize.css">
+    <link rel="stylesheet" href="public/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/assets/css/fontello.css">
+    <link href="public/assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
+    <link href="public/assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
+    <link href="public/assets/css/animate.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="public/assets/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/assets/css/icheck.min_all.css">
+    <link rel="stylesheet" href="public/assets/css/price-range.css">
+    <link rel="stylesheet" href="public/assets/css/owl.carousel.css">
+    <link rel="stylesheet" href="public/assets/css/owl.theme.css">
+    <link rel="stylesheet" href="public/assets/css/owl.transitions.css">
+    <link rel="stylesheet" href="public/assets/css/lightslider.min.css">
+    <link rel="stylesheet" href="public/assets/css/style.css">
+    <link rel="stylesheet" href="public/assets/css/responsive.css">
+</head>
+<body>
+
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+<!-- Body content -->
+<div class="header-connect">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-8  col-xs-12">
+                <div class="header-half header-call">
+                    <p>
+                        <span><i class="pe-7s-call"></i> +225 00 0000 0000</span>
+                        <span><i class="pe-7s-mail"></i> infos@bienseloger.immo</span>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-12">
+                <div class="header-half header-social">
+                    <ul class="list-inline">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End top header -->
+
+<nav class="navbar navbar-default ">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="public/assets/img/logo.png"  alt=""></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse yamm" id="navigation">
+            <div class="button navbar-right">
+                <button class="navbar-btn nav-button wow bounceInRight "
+                        data-wow-delay="0.4s"><a href="/publier-propriete" class="{% if active == 'publier'  %} active {% endif %} login">PUBLIER UNE PROPRIETE</a> <i class="fa fa-houzz"></i>
+                </button>
+                {#<button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('#')"#}
+                {#data-wow-delay="0.5s">Submit#}
+                {#</button>#}
+            </div>
+            <ul class="main-nav nav navbar-nav navbar-right">
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="{% if active == 'index'  %} active {% endif %}" href="/accueil"><i class="fa fa-home" style="color: red"></i> Acceuil</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="{% if active == 'contact'  %} active {% endif %}" href="/contacts"><i class="fa fa-envelope" style="color: red"></i> Contacts</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="{% if active == 'about'  %} active {% endif %}" href="/apropos"><i class="fa fa-building-o" style="color: red"></i> Qui sommes-nous</a></li>
+                <li class="dropdown ymm-sw" data-wow-delay="0.1s"><a href="/produits" class="{% if active == 'PRODUITS'  %} active {% endif %}"><i class="fa fa-building" style="color: red"></i> Produits</a></li>
+                {#<li class="wow fadeInDown" data-wow-delay="0.1s"><a href="">Annonces</a></li>#}
+                <li class="dropdown ymm-sw " data-wow-delay="0.1s">
+                    <a href="#" class="dropdown-toggle {% if active == 'login'  %} active {% endif %}" data-toggle="dropdown" data-hover="dropdown" data-delay="200"><i class="fa fa-users" style="color: red"></i> Compte <b class="caret"></b></a>
+                    <ul class="dropdown-menu navbar-nav">
+                        {% if session == o %}
+                            <li>
+                                <a href="/login">Connexion</a>
+                            </li>
+                            <li>
+                                <a href="/register">Inscription</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a class="dropdown-item" href="#"><i class="dw dw-user1"></i>{{ log_con[0].NomPrenom }}</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/profile"><i class="dw dw-phone-call"></i>Profile</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/mypropriete"><i class="dw dw-email"></i> Mes Publications</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/index.php?logout=true"><i class="dw dw-logout"></i>Déconnecter</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- End of nav bar -->
+
+<div class="page-head">
+    <div class="container">
+        <div class="row">
+            <div class="page-head-content">
+                <h1 class="page-title">{{ view_produits.Title }} </h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End page header -->
+
+<!-- property area -->
+<div class="content-area single-property" style="background-color: #FCFCFC;">&nbsp;
+    <div class="container">
+
+        <div class="clearfix padding-top-40" >
+
+            <div class="col-md-8 single-property-content prp-style-1 ">
+                <div class="row">
+                    <div class="light-slide-item">
+                        <div class="clearfix">
+                            <div class="favorite-and-print">
+                                <a class="add-to-fav" href="#login-modal" data-toggle="modal">
+                                    <i class="fa fa-star-o"></i>
+                                </a>
+                                <a class="printer-icon " href="javascript:window.print()">
+                                    <i class="fa fa-print"></i>
+                                </a>
+                            </div>
+                            <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                                <li data-thumb="files/proprietes/{{ view_produits.ImageP }}" width="760px" height="510px">
+                                    <img width="760px" height="510px" src="files/proprietes/{{ view_produits.ImageP }}" />
+                                </li>
+                                <li data-thumb="files/proprietes/{{ view_produits.ImageS }}" width="760px" height="510px">
+                                    <img width="760px" height="510px" src="files/proprietes/{{ view_produits.ImageS }}" />
+                                </li>
+                                <li data-thumb="files/proprietes/{{ view_produits.ImageT }}" width="760px" height="510px">
+                                    <img width="760px" height="510px" src="files/proprietes/{{ view_produits.ImageT }}" />
+                                </li>
+                                <li data-thumb="files/proprietes/{{ view_produits.ImageQ }}" width="760px" height="510px">
+                                    <img width="760px" height="510px" src="files/proprietes/{{ view_produits.ImageQ }}" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="single-property-wrapper">
+                    <div class="single-property-header">
+                        <h1 class="property-title pull-left">{{ view_produits.Title }}</h1>
+                        <span class="property-price pull-right">{{ view_produits.Prix | format_currency('XOF') }}</span>
+                    </div>
+
+                    <div class="property-meta entry-meta clearfix ">
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-tag">
+                                        <img src="files/proprietes/{{ view_produits.ImageP }}">
+                                    </span>
+                            <span class="property-info-entry">
+                                        <span class="property-info-label" style="color: orange">Status</span>
+                                        <span class="property-info-value">{% if view_produits.Etat == 0 %} A LOUER {% elseif view_produits.Etat == 1 %} En VENTE {% endif %}</span>
+                                    </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info icon-area">
+                                        <img src="public/assets/img/icon/room-orange.png">
+                                    </span>
+                            <span class="property-info-entry">
+                                        <span class="property-info-label">Superficie</span>
+                                        <span class="property-info-value">{{ view_produits.Espaces }} M<sup>2</sup></span>
+                                    </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-bed">
+                                        <img src="public/assets/img/icon/bed-orange.png">
+                                    </span>
+                            <span class="property-info-entry">
+                                        <span class="property-info-label">Chambres</span>
+                                        <span class="property-info-value">{{ view_produits.Nb_chambres }}</span>
+                                    </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-bed">
+                                        <img src="public/assets/img/icon/cars-orange.png">
+                                    </span>
+                            <span class="property-info-entry">
+                                        <span class="property-info-label">Garages</span>
+                                        <span class="property-info-value">{{ view_produits.Garages }}</span>
+                                    </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-bath">
+                                        <img src="public/assets/img/icon/os-orange.png">
+                                    </span>
+                            <span class="property-info-entry">
+                                        <span class="property-info-label">Salons</span>
+                                        <span class="property-info-value">{{ view_produits.Salon }}</span>
+                                    </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-garage">
+                                        <img src="public/assets/img/icon/room-orange.png">
+                                    </span>
+                            <span class="property-info-entry">
+                                        <span class="property-info-label">Cuisines</span>
+                                        <span class="property-info-value">{{ view_produits.Cuisines }}</span>
+                                    </span>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-3 col-md-3 p-b-15">
+                                    <span class="property-info-icon icon-garage">
+                                        <img src="public/assets/img/icon/shawer-orange.png">
+                                    </span>
+                            <span class="property-info-entry">
+                                        <span class="property-info-label">Salle de bain</span>
+                                        <span class="property-info-value">{{ view_produits.Salle_bain }}</span>
+                                    </span>
+                        </div>
+
+
+                    </div>
+                    <!-- .property-meta -->
+
+                    <div class="section">
+                        <h4 class="s-property-title">Descriptions</h4>
+                        <div class="s-property-content">
+                            <p>{{ view_produits.Desciption }}</p>
+                        </div>
+                    </div>
+                    <!-- End description area  -->
+
+                    <div class="section additional-details">
+
+                        <h4 class="s-property-title">Plus de Detaile</h4>
+
+                        <ul class="additional-details-list clearfix">
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Nom</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{ view_produits.Title }}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Ville</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{ view_produits.ville }}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Commune</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{ view_produits.Commune }}</span>
+                            </li>
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Quartier</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{ view_produits.Quartier }}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Statut</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{% if view_produits.Etat == 1 %} Vente {% elseif view_produits.Etat == 0 %} Louer{% endif %}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Prix</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{ view_produits.Prix | format_currency('XOF') }}</span>
+                            </li>
+
+                            <li>
+                                <span class="col-xs-6 col-sm-4 col-md-4 add-d-title">Pieces</span>
+                                <span class="col-xs-6 col-sm-8 col-md-8 add-d-entry">{{ view_produits.Nb_chambres + view_produits.Salon  }}</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!-- End additional-details area  -->
+
+                    <div class="section">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Localisation...  </h3>
+                        </div>
+                        <div class="video-thumb">
+                            {{ view_produits.LinkMap|raw }}
+                        </div>
+                    </div>
+                    <!-- End video area  -->
+                </div>
+            </div>
+
+
+            <div class="col-md-4 p0">
+                <aside class="sidebar sidebar-property blog-asside-right">
+                    <div class="dealer-widget">
+                        <div class="dealer-content">
+                            <div class="inner-wrapper">
+
+                                <div class="clear">
+                                    <div class="col-xs-4 col-sm-4 dealer-face">
+                                        <a href="">
+                                            <img src="files/agents/{{ view_produits.ImageA }}" class="img-circle">
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8 col-sm-8 ">
+                                        <h3 class="dealer-name">
+                                            <a href="">{{ view_produits.NomPrenom }}</a><br>
+                                            <span>{% if view_produits.Role == 0 %} Administrateur {% elseif view_produits.Role == 1 %} AGENT {% endif %}</span>
+                                        </h3>
+                                        <hr>
+                                        <div class="dealer-social-media text-center">
+                                            <a class="facebook" target="_blank" href="mailto:{{ view_produits.Email }}">
+                                                <i class="fa fa-2x fa-comment" style="color: #0C9C14"></i>
+                                            </a>
+                                            <a class="gplus" target="_blank" onclick="
+                                                    window.open(
+                                                    '//api.whatsapp.com/send?phone=225{{ view_produits.Tel }}&amp;=Bonjour à {{ view_produits.NomPrenom }}*',
+                                                    'whatsapp-share-dialog',
+                                                    'width=626,height=436');
+                                                    return false;">
+                                                <i class="fa fa-2x fa-whatsapp" style="color: #00a65a"></i>
+                                            </a>
+                                            <a class="linkedin" target="_blank" href="tel:225{{ view_produits.Tel }}">
+                                                <i class="fa fa-2x fa-phone-square" style="color: #00ADEF"></i>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="clear">
+                                    <ul class="dealer-contacts">
+                                        <li><i class="pe-7s-map-marker strong"> </i> {{ view_produits.CommuneAge }}</li>
+                                        <li><i class="pe-7s-mail strong"> </i> {{ view_produits.Email }}</li>
+                                        <li><i class="pe-7s-call strong"> </i> {{ view_produits.Tel }}</li>
+                                    </ul>
+                                    <p>{{ view_produits.DescriptionAge |u.truncate(95,'...')}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Les Proprietes Similaires</h3>
+                        </div>
+                        <div class="panel-body recent-property-widget">
+                            <ul>
+                                {% for homesimi in show_produits_limit %}
+                                    <li>
+                                        <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
+                                            <a href="/detail_propriete?id={{ homesimi.idT_PRODUIT }}"><img src="files/proprietes/{{ homesimi.ImageP }}"></a>
+                                            <span class="property-seeker">
+                                                    <b class="b-1">A</b>
+                                                    <b class="b-2">S</b>
+                                                </span>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
+                                            <h6> <a href="/detail_propriete?id={{ homesimi.idT_PRODUIT }}">{{ homesimi.Title }}</a></h6>
+                                            <span class="property-info-label">{% if homesimi.Etat == 1 %} A Vendre {% elseif homesimi.Etat == 0 %}A Louer{% endif %}</span>
+                                            <span class="property-price">{{ homesimi.Prix | format_currency('XOF') }}</span>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default sidebar-menu wow fadeInRight animated">
+                        <div class="panel-body recent-property-widget">
+                            <a class="video-popup" href="yout" title="Virtual Tour">
+                                <img src="files/proprietes/{{ view_produits.ImageP }}" width="850" height="570" class="img-responsive wp-post-image" alt="Exterior">
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Footer area-->
+<div class="footer-area">
+
+    <div class=" footer">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 col-sm-6 wow fadeInRight animated">
+                    <div class="single-footer">
+                        <h4>À Propos de nous </h4>
+                        <div class="footer-title-line"></div>
+
+                        <img src="public/assets/img/logo.png" alt="" class="wow pulse" data-wow-delay="1s">
+                        <p>Lorem ipsum dolor cum necessitatibus su quisquam molestias. Vel unde, blanditiis.</p>
+                        <ul class="footer-adress">
+                            <i class="pe-7s-map-marker strong"> </i> Abidjan, Cocody, Angré 8<sup>ieme</sup> Tranche</li>
+                            <li><i class="pe-7s-mail strong"> </i> info@bienseloger.com</li>
+                            <li><i class="pe-7s-call strong"> </i> +225 000 000 0000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 wow fadeInRight animated">
+                    <div class="single-footer">
+                        <h4>Liens Rapides </h4>
+                        <div class="footer-title-line"></div>
+                        <ul class="footer-menu">
+                            <li><a href="#">Qui sommes nous?</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Annonces </a></li>
+                            <li><a href="/contact">Contacts</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6 wow fadeInRight animated">
+                    <div class="single-footer news-letter">
+                        <h4>Qui sommes nous?</h4>
+                        <div class="footer-title-line"></div>
+                        <p>Lorem ipsum dolor sit amet, nulla suscipit similique quisquam molestias. Vel unde,
+                            blanditiis.</p>
+
+                        <div class="social pull-right">
+                            <ul>
+                                <li><a class="wow fadeInUp animated" href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="wow fadeInUp animated" href="https://www.facebook.com/" data-wow-delay="0.2s"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="wow fadeInUp animated" href="https://instagram.com/" data-wow-delay="0.4s"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-copy text-center">
+        <div class="container">
+            <div class="row">
+                <div class="pull-left">
+                    <span> Copyright © <a href="http://www.bienseloger.com">BienseLoger</a> , <script>document.write(new Date().getFullYear());</script> Tous droits réservés | conçu par Kernel_KM  </span>
+                </div>
+                <div class="bottom-menu pull-right">
+                    <ul>
+                        <li><a class="wow fadeInUp animated" href="/" data-wow-delay="0.2s">Accueil</a></li>
+                        <li><a class="wow fadeInUp animated" href="/faq" data-wow-delay="0.2s">FAQ</a></li>
+                        <li><a class="wow fadeInUp animated" href="/produits" data-wow-delay="0.3s">Services</a></li>
+                        <li><a class="wow fadeInUp animated" href="/contacts" data-wow-delay="0.4s">Contacts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="public/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="public/assets/js/jquery-1.10.2.min.js"></script>
+<script src="public/bootstrap/js/bootstrap.min.js"></script>
+<script src="public/assets/js/bootstrap-select.min.js"></script>
+<script src="public/assets/js/bootstrap-hover-dropdown.js"></script>
+<script src="public/assets/js/easypiechart.min.js"></script>
+<script src="public/assets/js/jquery.easypiechart.min.js"></script>
+<script src="public/assets/js/owl.carousel.min.js"></script>
+<script src="public/assets/js/wow.js"></script>
+<script src="public/assets/js/icheck.min.js"></script>
+<script src="public/assets/js/price-range.js"></script>
+<script type="text/javascript" src="public/assets/js/lightslider.min.js"></script>
+<script src="public/assets/js/main.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('#image-gallery').lightSlider({
+            gallery: true,
+            item: 1,
+            thumbItem: 9,
+            slideMargin: 0,
+            speed: 500,
+            auto: true,
+            loop: true,
+            onSliderLoad: function () {
+                $('#image-gallery').removeClass('cS-hidden');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

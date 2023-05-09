@@ -1,0 +1,141 @@
+{% extends 'layout.kmphtml.twig' %}
+{% block title %}Mon Profile | BIENSELOGER{% endblock %}
+{% block contenu %}
+
+    <div class="page-head">
+        <div class="container">
+            <div class="row">
+                <div class="page-head-content">
+                    <h1 class="page-title">Bonjour : <span class="orange strong">{{ log_con[0].NomPrenom }}</span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End page header -->
+
+    <!-- property area -->
+    <div class="content-area user-profiel" style="background-color: #FCFCFC;">&nbsp;
+        <div class="container">
+            {% if message == 'success' %}
+                <div class="alert alert-success" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <i class="fa fa-check fa-2x" style="font-size: 16"></i> {{ message_success }}
+                </div>
+            {% elseif message == 'echecc' %}
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <i class="fa fa-close fa-2x" style="font-size: 16"></i> {{ message_echec }}
+                </div>
+
+            {% elseif message == 'echec' %}
+
+                <div class="alert alert-danger" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <i class="fa fa-close fa-2x" style="font-size: 16"></i> {{ add_noexit }}
+                </div>
+
+            {% endif %}
+            <hr>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 profiel-container">
+
+                    <form action="" method="post" enctype="multipart/form-data">
+                        <div class="profiel-header">
+                            <h3>
+                                <b>CRÉEZ</b> VOTRE PROFIL <br>
+                                <small>Ces informations nous permettront d'en savoir plus sur vous.</small>
+                            </h3>
+                            <hr>
+                        </div>
+
+                        <div class="clear">
+                            <div class="col-sm-3 col-sm-offset-1">
+                                <div class="picture-container">
+                                    <div class="picture">
+                                        {% if log_con[0].ImageA == 0 %}
+                                            <img src="files/agents/ok.jpg" width="220px" height="230px" class="picture-src" id="wizardPicturePreview" title=""/>
+                                            <input type="file" name="photo" id="wizard-picture">
+                                        {% else %}
+                                            <img src="files/agents/{{ log_con[0].ImageA }}" width="220px" height="230px" class="picture-src" id="wizardPicturePreview" title=""/>
+                                            <input type="hidden" name="curent_image" value="{{ log_con[0].ImageA }}" id="wizard-picture">
+                                            <input type="file" name="photo" id="wizard-picture">
+                                        {% endif %}
+                                    </div>
+                                    <h6>Choose Picture</h6>
+                                </div>
+                            </div>
+                            <input type='number' value='{{log_con[0].idT_AGENT}}' hidden name='id_edit'>
+                            <div class="col-sm-6 padding-top-25">
+                                <div class="form-group">
+                                    <label>Nom & Prénom<small>(obligatoire)</small></label>
+                                    <input name="name" type="text" pattern="[a-zA-Z\s]+" class="form-control" value="{{ log_con[0].NomPrenom }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 padding-top-25">
+                                <div class="form-group">
+                                    <label>Email <small>(obligatoire)</small></label>
+                                    <input name="email" type="email" class="form-control" value="{{ log_con[0].Email }}">
+                                </div>
+                            </div>
+                            <div class="col-sm-6 padding-top-25">
+                                <div class="form-group">
+                                    <label>Mot de Passe <small>(obligatoire)</small></label>
+                                    <input name="pwd" type="password" value="{{ log_con[0].Password }}" class="form-control">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="clear">
+                            <br>
+                            <hr>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Téléphone :</label>
+                                        <input name="tel" type="tel" pattern="[0-9]+" class="form-control" value="{{ log_con[0].Tel }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Commune de l'agent :</label>
+                                        <input name="commune" type="text" pattern="[a-zA-Z\s]+" class="form-control" value="{{ log_con[0].CommuneAge }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Rôle :</label>
+                                        <input type="tel" pattern="[a-zA-Z\s]+" disabled class="form-control" value="{{ log_con[0].Role }}">
+                                        <input name="role" type="hidden" pattern="[a-zA-Z\s]+" class="form-control" value="{{ log_con[0].Role }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Description de l'agent :</label>
+                                        <textarea class="form-control" name="desc">{{ log_con[0].DescriptionAge }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-5 col-sm-offset-1">
+                            <br>
+                            <input type='submit' class='btn btn-finish btn-primary' name='modifier' value='Modifier' />
+                        </div>
+                        <br>
+                    </form>
+
+                </div>
+            </div><!-- end row -->
+
+        </div>
+    </div>
+
+{% endblock %}

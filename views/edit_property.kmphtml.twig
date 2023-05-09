@@ -1,0 +1,279 @@
+{% extends 'layout.kmphtml.twig' %}
+{% block title %}Modification d'une propriété | BIENSELOGER{% endblock %}
+{% block contenu %}
+
+    <div class="page-head">
+        <div class="container">
+            <div class="row">
+                <div class="page-head-content">
+                    <h1 class="page-title"><i class="fa fa-contao"> Je modifie lee informations de ma propriété...</i></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End page header -->
+    <!-- property area -->
+    <div class="content-area submit-property" style="background-color: #FCFCFC;">&nbsp;
+        <div class="container">
+            <div class="clearfix" >
+                <div class="wizard-container">
+                    {#{% if message == 'success' %}#}
+                        {#<div class="alert alert-success" role="alert">#}
+                            {#<button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+                                {#<span aria-hidden="true">&times;</span></button>#}
+                            {#<i class="fa fa-check fa-2x" style="font-size: 16"></i> {{ message_succes}}#}
+                        {#</div>#}
+                    {#{% elseif message == 'echec' %}#}
+                        {#<div class="alert alert-danger" role="alert">#}
+                            {#<button type="button" class="close" data-dismiss="alert" aria-label="Close">#}
+                                {#<span aria-hidden="true">&times;</span></button>#}
+                            {#<i class="fa fa-close fa-2x" style="font-size: 16"></i> {{ message_echec }}#}
+                        {#</div>#}
+                    {#{% endif %}#}
+                    <hr>
+                    <div class="wizard-card ct-wizard-orange" id="wizardProperty">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="wizard-header">
+                                <h3>
+                                    <b>MODIFIER</b> VOTRE PROPRIÉTÉ <br>
+                                    <small>De belle propriété.</small>
+                                </h3>
+                            </div>
+
+                            <ul>
+                                <li><a href="#step1" data-toggle="tab" $>étape 1 </a></li>
+                                <li><a href="#step2" data-toggle="tab" class="text-capitalize">étape 2 </a></li>
+                                <li><a href="#step3" data-toggle="tab" class="text-capitalize">étape 3 </a></li>
+                                <li><a href="#step4" data-toggle="tab" class="text-capitalize">terminé </a></li>
+                            </ul>
+
+                            <div class="tab-content">
+
+                                <div class="tab-pane" id="step1">
+                                    <div class="row p-b-15  ">
+                                        <h4 class="info-text"> Commençons par les informations de base (avec validation) </h4>
+                                        <div class="col-sm-4 col-sm-offset-1">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    {% if edit_propert.ImageP == 0 %}
+                                                        <img src="public/assets/img/default-property.jpg" width="220px" height="230px" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                        <input type="file" name="photo" id="wizard-picture">
+                                                    {% else %}
+                                                        <img src="files/proprietes/{{ edit_propert.ImageP }}" width="220px" height="230px" class="picture-src" id="wizardPicturePreview" title=""/>
+                                                        <input type="hidden" name="curent_image" value="{{ edit_propert.ImageP }}" id="wizard-picture">
+                                                        <input type="file" name="photo" id="wizard-picture">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Nom de la propriété <small>(obligatoire)</small></label>
+                                                <input name="nom" value="{{ edit_propert.Title }}" pattern="[A-Za-z0-9]+" type="text" class="form-control" required placeholder="Super villa ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Prix ​​de la propriété <small>(obligatoire)</small></label>
+                                                <input name="price" value="{{ edit_propert.Prix }}" pattern="[0-9\s]+"  type="number" minlength="6" maxlength="12" required="required" pattern="[0-9]+" class="form-control" placeholder="le montant de la maison">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Description de la propriété: <small>(obligatoire)</small></label>
+                                                <textarea name="description" class="form-control" required >{{ edit_propert.Desciption }}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Quatier : <small>(obligatoire)</small></label>
+                                                <input name="ktier" pattern="[a-zA-Z0-9\s]+" value="{{ edit_propert.Quartier }}" class="form-control" required >  </input>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  End step 1 -->
+
+                                <div class="tab-pane" id="step2">
+                                    <h4 class="info-text"> Combien votre propriété est belle? </h4>
+                                    <div class="row">
+                                        {#<div class="col-sm-12">#}
+                                        {#<div class="col-sm-12">#}
+                                        {#<div class="form-group">#}
+                                        {#<label>Description de la propriété: <small>(obligatoire)</small></label>#}
+                                        {#<textarea name="description" class="form-control" required ></textarea>#}
+                                        {#</div>#}
+                                        {#</div>#}
+                                        {#</div>#}
+
+                                        <div class="col-sm-12">
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label>Commune de la propriété :</label>
+                                                    <input name="commune" type="text" class="form-control" value="{{ edit_propert.Commune }}" pattern="[a-zA-Z\s]+">
+                                                    {#<select id="lunchBegins" required name="commune" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="sélectionner la ville">#}
+                                                        {#<option value="{{ edit_propert.Commune }}">{{ edit_propert.Commune }}</option>#}
+                                                        {#{% for commune in communes %}#}
+                                                            {#<option value="{{ commune.COMMUNE }}">{{ commune.COMMUNE }}</option>#}
+                                                        {#{% endfor %}#}
+                                                    {#</select>#}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label>Ville de la propriété :</label>
+                                                    <input name="ville" type="text" class="form-control" value="{{ edit_propert.ville }}" pattern="[a-zA-Z\s]+">
+                                                    {#<select  name="ville" required class="selectpicker" data-live-search="true" data-live-search-style="begins" title="sélectionner la ville">#}
+                                                        {#{% for ville in villes %}#}
+                                                            {#<option value="{{ ville.city }}">{{ ville.city }}</option>#}
+                                                        {#{% endfor %}#}
+                                                    {#</select>#}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label>Statue de la propriété  :</label>
+                                                    <select id="basic" required name="etat" class="selectpicker show-tick form-control">
+                                                        <option value="{{ edit_propert.Etat }}" class="text-capitalize"> {% if edit_propert.Etat == 0 %}A Louer {% else %} En Vente {% endif %} </option>
+                                                        <option value="0">A Louer</option>
+                                                        <option value="1">En Vente</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group">
+                                                    <label>Categorie de la propriété :</label>
+                                                    <select id="basic" required name="cat" class="selectpicker show-tick form-control">
+                                                        <option value="{{ edit_propert.idT_CATEGORIE }}"> {{ edit_propert.Libelle }} </option>
+                                                        {% for cat in show_categorie %}
+                                                            <option value="{{ cat.idT_CATEGORIE }}">{{ cat.Libelle }}</option>
+                                                        {% endfor %}
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 padding-top-15">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="property-geo">Chambre:</label>
+                                                    <input type="number" minlength="1" value="{{ edit_propert.Nb_chambres }}" maxlength="9" class="form-control" pattern="[0-9]+" placeholder="nombre de chambre" required="required" name="nbcham"  >
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+
+                                                <div class="form-group">
+                                                    <label for="price-range">Salon :</label>
+                                                    <input type="number" minlength="1" value="{{ edit_propert.Salon }}" maxlength="9" class="form-control" placeholder="nombre de salon" pattern="[0-9]+" required="required" name="salon">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+
+                                                <div class="form-group">
+                                                    <label for="property-geo">Surface de la propriété (m2) :</label>
+                                                    <input type="number" minlength="1" value="{{ edit_propert.Espaces }}" maxlength="9" class="form-control" pattern="[0-9]+" placeholder="la surface de construction de la propriété" required="required" name="espace">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 padding-top-15">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="garage">Garage(s) :</label>
+                                                    <input type="number" minlength="1" value="{{ edit_propert.Garages }}" maxlength="9" id="garage" pattern="[0-9]+" name="garage" placeholder="nombre de garage" class="form-control" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label for="salbain">Salle de Bain :</label>
+                                                    <input type="number" minlength="1" maxlength="9" value="{{ edit_propert.Salle_bain }}" required="required" pattern="[0-9]+" name="salbain" id="salbain" placeholder="nombre de salle de bain" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label id="cuisine">Cuisine(s) :</label>
+                                                    <input type="number" minlength="1" maxlength="9" value="{{ edit_propert.Cuisines }}" class="form-control" pattern="[0-9]+" id="cuisine" required="required" placeholder="le nombre de cuisine" name="cuisine">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                    </div>
+                                </div>
+                                <!-- End step 2 -->
+
+                                <div class="tab-pane" id="step3">
+                                    <h4 class="info-text">Donnez-nous d'autres images de la propriété ?  </h4>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="property-images">D'autre Images :</label>
+                                                <input class="form-control" name="imageS" type="file" accept=".jpg,.png,.jpge,.gif" id="property-images">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="property-imaget">D'autre Images :</label>
+                                                <input class="form-control" type="file" name="imageT" accept=".jpg,.png,.jpge,.gif" id="property-imaget">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="property-imageq">D'autre Images :</label>
+                                                {% if edit_propert.ImageQ == 0 %}
+                                                    <input class="form-control" type="file" name="imageQ" accept=".jpg,.png,.jpge,.gif" id="property-imageq">
+                                                {% else %}
+                                                    <input class="form-control" type="file" name="curent_imageQ" accept=".jpg,.png,.jpge,.gif" id="property-imageq" value="files/proprietes/{{ edit_propert.ImageQ }}">
+                                                {% endif %}
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="property-video">Entrez l'iframe de la localisation :</label>
+                                                <input class="form-control" value="{{ edit_propert.LinkMap }}" placeholder="<iframe src=''></iframe>" name="iframe" type="text">
+                                                <p class="help-block">Le lien de la situation géographique venant de google map .</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  End step 3 -->
+
+
+                                <div class="tab-pane" id="step4">
+                                    <h4 class="info-text"> Terminé et soumettre </h4>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="">
+                                                <p>
+                                                    <label style="font-size: 20px"><strong><code>Termes et conditions</code></strong></label>
+                                                    By accessing or using  GARO ESTATE services, such as
+                                                    posting your property advertisement with your personal
+                                                    information on our website you agree to the
+                                                    collection, use and disclosure of your personal information
+                                                    in the legal proper manner
+                                                </p>
+
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input required type="checkbox" /> <strong>Accepter les termes et conditions.  </strong>
+                                                    </label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--  End step 4 -->
+
+                            </div>
+
+                            <div class="wizard-footer">
+                                <div class="pull-right">
+                                    <input type='button' class='btn btn-next btn-primary' name='next' value='Suivant' />
+                                    <input type='submit' class='btn btn-finish btn-primary ' name='finish' value='Terminer' />
+                                </div>
+
+                                <div class="pull-left">
+                                    <input type='button' class='btn btn-previous btn-default' name='previous' value='Précédent' />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End submit form -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

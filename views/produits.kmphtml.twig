@@ -1,0 +1,145 @@
+{% extends 'layout.kmphtml.twig' %}
+{% block title %}BIENSELOGER | NOS DIFFERENTES PROPRIETES {% endblock %}
+{% block contenu %}
+
+    <div class="page-head">
+        <div class="container">
+            <div class="row">
+                <div class="page-head-content">
+                    <h1 class="page-title">Nos differents Produits</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End page header -->
+    <!-- property area -->
+    <div class="properties-area recent-property" style="background-color: #FFF;">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3 p0 padding-top-40">
+                    <div class="blog-asside-right pr0">
+                        <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Recherche Intelligente</h3>
+                            </div>
+                            <div class="panel-body search-widget">
+                                <form method="get" class=" form-inline">
+                                    <fieldset>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <input type="text" class="form-control" name="motcle" placeholder="mot-clé">
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <fieldset >
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <button type="submit" class="button btn largesearch-btn" name="recherche"><i class="fa fa-search"></i> Récherche</button>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default sidebar-menu wow fadeInRight animated">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Recommendation</h3>
+                            </div>
+                            <div class="panel-body recent-property-widget">
+                                <ul>
+                                    {% for homes_recom in show_produits_limit %}
+                                        <li>
+                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
+                                                <a href="/detail_propriete?id={{ home_recom.idT_PRODUIT }}"><img src="files/proprietes/{{ homes_recom.ImageP }}"></a>
+                                                <span class="property-seeker">
+                                                    <b class="b-1">A</b>
+                                                    <b class="b-2">S</b>
+                                                </span>
+                                            </div>
+                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
+                                                <h6> <a href="/detail_propriete?id={{ homes_recom.idT_PRODUIT }}">{{ homes_recom.Title }} </a></h6>
+                                                <span class="property-price">{{ homes_recom.Prix |format_currency('XOF')}}</span>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9  pr0 padding-top-40 properties-page">
+                    <div class="col-md-12 clear">
+                        <div class="col-xs-10 page-subheader sorting pl0">
+                            <ul class="sort-by-list">
+                                <li class="active">
+
+                                </li>
+                                <li class="">
+                                    
+                                </li>
+                            </ul><!--/ .sort-by-list-->
+
+                            <div class="items-per-page">
+
+                            </div><!--/ .items-per-page-->
+                        </div>
+
+                        <div class="col-xs-2 layout-switcher">
+                            <a class="layout-list" href="javascript:void(0);"> <i class="fa fa-th-list"></i>  </a>
+                            <a class="layout-grid active" href="javascript:void(0);"> <i class="fa fa-th"></i> </a>
+                        </div><!--/ .layout-switcher-->
+                    </div>
+
+                    <div class="col-md-12 clear">
+                        <div id="list-type" class="proerty-th">
+                           {% for home_prod in show_produits %}
+                               <div class="col-sm-6 col-md-4 p0">
+                                   <div class="box-two proerty-item">
+                                       <div class="item-thumb">
+                                           <a href="/detail_propriete?id={{ home_prod.idT_PRODUIT }}" ><img src="files/proprietes/{{ home_prod.ImageP }}" style="height: 60px;"></a>
+                                       </div>
+                                       <div class="item-entry overflow">
+                                           <h5><a href="/detail_propriete?id={{ home_prod.idT_PRODUIT }}" class="truncate"> {{ home_prod.Title }} </a></h5>
+                                           <div class="dot-hr"></div>
+                                           <span class="pull-left"><b> Surface :</b> {{ home_prod.Espaces }} M<sup>2</sup> </span>
+                                           <span class="proerty-price pull-right"> {{ home_prod.Prix| format_currency('XOF') }}</span>
+                                           <p style="display: none;">{{ home_prod.Desciption|u.truncate(100,'...')}}</p>
+                                           <div class="property-icon">
+                                               <img src="public/assets/img/icon/bed.png">{{ home_prod.Nb_chambres }}||
+                                               <img src="public/assets/img/icon/shawer.png">{{ home_prod.Salle_bain }}|
+                                               <img src="public/assets/img/icon/cars.png">{{ home_prod.Garages }}
+                                           </div>
+                                       </div>
+                                    </div>
+                               </div>
+                           {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="pull-right">
+                            <div class="pagination">
+                                <ul>
+                                    <li><a href="?page={{ page_courante - 1 }}">Prev</a></li>
+                                    {% for i in range(1,total_page) %}
+                                        {% if i == page_courante %}
+                                            <li><a class="active" style="background-color: yellow" href="#">{{ i }}</a></li>
+                                        {% else  %}
+                                            <li><a class="{% if i == get_page %}active{% endif %}" href="?{% if path %}motcle={{ path}}{% endif %}&page={{ i }}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <li><a href="?page={{ page_courante + 1 }}">Next</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,249 @@
+{% extends 'layout.kmphtml.twig' %}
+{% block title %}Bienvenue chez Bienseloger{% endblock %}
+{% block contenu %}
+
+    <div class="slide-2">
+        <div id="slider" class="sl-slider-wrapper">
+            <div class="sl-slider">
+                {% for homes in show_produits_limit %}
+                    <div class="sl-slide" data-orientation="horizontal" data-slice1-rotation="-25" data-slice2-rotation="-25"
+                         data-slice1-scale="2" data-slice2-scale="2">
+                        <div class="sl-slide-inner ">
+                            <div class="bg-img bg-img-1" style="background-image: url(public/assets/img/slide2/1.jpg);"></div>
+                            <blockquote><cite>
+                                    <a href="#">{{homes.Title  }}</a>
+                                </cite>
+                                <p>
+                                    {{ homes.Description }}.
+                                </p>
+                                <span class="pull-left"><b> Superficie :</b> {{ homes.Espaces }} M<sup>2</sup> </span>
+                                <span class="proerty-price pull-right"><b> Prix :</b> {{ homes.Prix|format_currency('XOF') }}</span>
+                                <div class="property-icon">
+                                    <img src="public/assets/img/icon/bed.png">{{ homes.Nb_Chambres }}|
+                                    <img src="public/assets/img/icon/shawer.png">{{ homes.Salle_bain }}|
+                                    <img src="public/assets/img/icon/cars.png">{{ homes.Salon }}
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div><!-- /sl-slider -->
+
+            <nav id="nav-dots" class="nav-dots">
+                <span class="nav-dot-current"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </nav>
+        </div><!-- /slider-wrapper -->
+    </div>
+
+    <!-- property area -->
+    <div class="content-area recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                    <!-- /.feature title -->
+                    <h2>Nos Meilleures propriétés soumises</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="proerty-th">
+                    {% for homes in show_produits_limit %}
+                        <div class="col-sm-6 col-md-3 p0">
+                            <div class="box-two proerty-item">
+                                <div class="item-thumb">
+                                    <a href="/detail_propriete?id={{ homes.idT_PRODUIT }}"><img src="files/proprietes/{{ homes.ImageP }}"></a>
+                                </div>
+                                <div class="item-entry overflow">
+                                    <h5><a href="/detail_propriete?id={{ homes.idT_PRODUIT }}">{{ homes.Title }} </a></h5>
+                                    <div class="dot-hr"></div>
+                                    <span class="pull-left"><b>Surface :</b> {{ homes.Espaces }} m<sup>2</sup></span>
+                                    <span class="proerty-price pull-right">{{ homes.Prix |format_currency('XOF') }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="col-sm-6 col-md-3 p0">
+                        <div class="box-tree more-proerty text-center">
+                            <div class="item-tree-icon">
+                                <i class="fa fa-th"></i>
+                            </div>
+                            <div class="more-entry overflow">
+                                <h5><a href="/produits" >C'EST TOI QUI DÉCIDES ? </a></h5>
+                                <h5 class="tree-sub-ttl">Afficher toutes les propriétés</h5>
+                                <a class="btn btn-danger" style="padding: 5px" href="/produits">toutes les propriétés</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Welcome area -->
+    <div class="Welcome-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 Welcome-entry  col-sm-12">
+                    <div class="col-md-5 col-md-offset-2 col-sm-6 col-xs-12">
+                        <div class="welcome_text wow fadeInLeft" data-wow-delay="0.3s" data-wow-offset="100">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                                    <!-- /.feature title -->
+                                    <h2 STYLE="font-size: 32px; text-align: center ;font-weight: bold">BIEN SE LOGER </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-6 col-xs-12">
+                        <div class="welcome_services wow fadeInRight" data-wow-delay="0.3s" data-wow-offset="100">
+                            <div class="row">
+                                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fbienseloger.immo%2F&tabs=timeline&width=480&height=650&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=1070316600329188" width="480" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--TESTIMONIALS -->
+    <div class="testimonial-area recent-property" style="background-color: #FCFCFC; padding-bottom: 15px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                    <!-- /.feature title -->
+                    <h2>Nos Proprietaires... </h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row testimonial">
+                    <div class="col-md-12">
+                        <div id="testimonial-slider">
+                            {% for show_all_agent in show_agent %}
+                                <div class="item">
+                                    <div class="client-text">
+                                        <p>{{ show_all_agent.DescriptionAge }} !</p>
+                                        <h4><strong>{{ show_all_agent.NomPrenom }}, </strong><i>{% if show_all_agent.Role == 1 %} Agent {% elseif show_all_agent.Role == 0 %}Admin{% endif %}</i></h4>
+                                    </div>
+                                    <hr>
+                                    <div class="client-face wow fadeInRight" data-wow-delay=".9s">
+                                        <img src="files/agents/{{ show_all_agent.ImageA }}" width="50%" alt="">
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Count area -->
+    <div class="count-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
+                    <!-- /.feature title -->
+                    <h2>Vous pouvez nous faire confiance </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-xs-12 percent-blocks m-main" data-waypoint-scroll="true">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="count-item">
+                                <div class="count-item-circle">
+                                    <span class="fa fa-users fa-3x"></span>
+                                </div>
+                                <div class="chart" data-percent="5000">
+                                    <h2 class="percent" >{{ nb_agent }}</h2>
+                                    <h5>NOS MEMRES</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="count-item">
+                                <div class="count-item-circle">
+                                    <span class="fa fa-building-o fa-3x"></span>
+                                </div>
+                                <div class="chart" data-percent="12000">
+                                    <h2 class="percent" >{{ nb_house }}</h2>
+                                    <h5>NOS PROPRIETES</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="count-item">
+                                <div class="count-item-circle">
+                                    <span class="fa fa-empire"></span>
+                                </div>
+                                <div class="chart" data-percent="120">
+                                    <h2 class="percent" >{{ nb_categorie }}</h2>
+                                    <h5>NOS TYPES DE PROPRIETE </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="count-item">
+                                <div class="count-item-circle">
+                                    <span class="fa fa-picture-o"></span>
+                                </div>
+                                <div class="chart" data-percent="5000">
+                                    <h2 class="percent" >{{ all_image }}</h2>
+                                    <h5>NOS PHOTOS</h5>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- boy-sale area -->
+    <div class="boy-sale-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-0 col-xs-12">
+                    <div class="asks-first">
+                        <div class="asks-first-circle">
+                            <span class="fa fa-search"></span>
+                        </div>
+                        <div class="asks-first-info">
+                            <h2>Vous cherchez une propriété?</h2>
+                            <p> Vous etes à la bonne adresse</p>
+                        </div>
+                        <div class="asks-first-arrow">
+                            <a href="#"><span class="fa fa-angle-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-10 col-sm-offset-1 col-xs-12 col-md-offset-0">
+                    <div class="asks-first">
+                        <div class="asks-first-circle">
+                            <span class="fa fa-money"></span>
+                        </div>
+                        <div class="asks-first-info">
+                            <h2>Vous voulez vendre une propriété?</h2>
+                            <a href="/login" class="">Inscrire toi pour être un agent</a>
+                        </div>
+                        <div class="asks-first-arrow">
+                            <a href="#"><span class="fa fa-angle-right"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <p class="asks-call">QUESTIONS? APPELEZ NOUS : <span class="strong"> +225-000- 000-0000</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
